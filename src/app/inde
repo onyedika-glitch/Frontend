@@ -1,0 +1,134 @@
+Yes, you can link different pages together in a React application using React Router. React Router is a standard library for routing in React. It enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL.
+
+First, you need to install React Router:
+
+```bash
+npm install react-router-dom
+```
+
+Then, you can set up your routes and link them together. Here is how you can do it:
+
+### 1. App.tsx
+
+```typescript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import EngagePage from './pages/EngagePage';
+import AnotherPage from './pages/AnotherPage'; // Import the new page
+
+const App: React.FC = () => {
+    return (
+        <Router>
+            <Switch>
+                <Route path="/" exact component={EngagePage} />
+                <Route path="/another" component={AnotherPage} /> {/* Define the route for the new page */}
+            </Switch>
+        </Router>
+    );
+};
+
+ReactDOM.render(<App />, document.getElementById('app'));
+```
+
+### 2. pages/EngagePage.tsx
+
+```typescript
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import Header from '../components/Header';
+import LeadInfo from '../components/LeadInfo';
+import LeadDetails from '../components/LeadDetails';
+import AboutJane from '../components/AboutJane';
+
+const EngagePage: React.FC = () => {
+    return (
+        <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl mx-auto">
+            <Header />
+            <LeadInfo />
+            <div className="flex items-center mb-4">
+                <button className="px-4 py-2 border-b-2 border-blue-600 text-blue-600">Engage</button>
+                <button className="px-4 py-2 text-gray-500">Research</button>
+            </div>
+            <LeadDetails />
+            <AboutJane />
+            <Link to="/another" className="text-blue-600 mt-4 inline-block">Go to Another Page</Link> {/* Add a link to the new page */}
+        </div>
+    );
+};
+
+export default EngagePage;
+```
+
+### 3. pages/AnotherPage.tsx
+
+Create a new file for the other page you want to link to.
+
+```typescript
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+
+const AnotherPage: React.FC = () => {
+    return (
+        <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl mx-auto">
+            <h1 className="text-2xl font-semibold mb-4">Another Page</h1>
+            <p>This is another page in the application.</p>
+            <Link to="/" className="text-blue-600 mt-4 inline-block">Go back to Engage Page</Link> {/* Add a link back to the Engage Page */}
+        </div>
+    );
+};
+
+export default AnotherPage;
+```
+
+### Directory Structure
+
+```
+/src
+  /components
+    Header.tsx
+    LeadInfo.tsx
+    LeadDetails.tsx
+    AboutJane.tsx
+  /pages
+    EngagePage.tsx
+    AnotherPage.tsx
+  /layouts
+    MainLayout.tsx
+  App.tsx
+```
+
+### Summary
+
+1. **Install React Router**: `npm install react-router-dom`
+2. **Set up routes in `App.tsx`**: Use `Router`, `Switch`, and `Route` to define your routes.
+3. **Link pages**: Use the `Link` component from `react-router-dom` to navigate between pages.
+
+This setup will allow you to navigate between the "Engage Page" and "Another Page" using links.
+
+
+
+
+Versions
+Create
+v1
+Toggle
+Break it in react components,pages,layouts,app with js and tsx
+(parent: v01)
+v2
+Toggle
+....
+(parent: v11)
+v3
+Toggle
+write the tsx own for them
+(parent: v21)
+v4
+Toggle
+this image i uploaded is in another page of the website,can i link them together
+(parent: v31)
+v5
+Toggle
+Message Blackbox or Upload Image
+
+Upload
