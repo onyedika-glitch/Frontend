@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@next/font": "^14.2.15",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.1",
+    "styled-components": "^6.1.13"
+  },
+  "devDependencies": {
+    "@types/next": "^8.0.7",
+    "babel-plugin-styled-components": "^2.1.4"
+  }
+}
